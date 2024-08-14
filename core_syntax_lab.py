@@ -17,13 +17,15 @@ class TimeInterval:
         pass 
 
     def __mul__(self, value): 
-        if all(self.hours, self.minutes, self.seconds) == 0:
-            return 0
-        
-        time_interval = self.hour + self.minutes + self.seconds * value
-        self.hour, self.minutes, self.seconds = self.format_time_interval(
-            time_interval
-        )
+        if isinstance(value, int):
+            new_time = (self.hours * 3600 + self.minutes * 60 + self.seconds) * value
+            new_hours = new_time // 3600
+            new_minutes = (new_time % 3600) // 60
+            new_seconds = new_time % 60
+            return TimeInterval(hours=new_hours, minutes=new_minutes, seconds=new_seconds)
+        else:
+            raise TypeError("can only multiply TimeInterval objects by integers")
+
 
     def __str__(self): 
         return 
