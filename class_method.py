@@ -37,3 +37,5 @@ car2 = Car.including_brand('DEF567', 'NewBrand')
 
 print(car1.vin, car1.brand)
 print(car2.vin, car2.brand)
+
+print(dir(car))
