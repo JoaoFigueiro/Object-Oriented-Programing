@@ -9,3 +9,12 @@ class Bank_Account:
             return True
         else:
             return False
+
+
+account_numbers = ['8' * 20, '7' * 4, '2222']
+
+for element in account_numbers:
+    if Bank_Account.validate(element):
+        print('We can use', element, ' to create a bank account')
+    else:
+        print('The account number', element, 'is invalid')
